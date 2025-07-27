@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Birthday ❤️</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html, body {
+      width: 100vw;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      width: 100vw;
+      height: 100vh;
+      background:
+        linear-gradient(135deg, #ff9a9e88, #fad0c488),
+        url('IMG-20240903-WA0005-01.jpeg') center center / cover no-repeat fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      text-align: center;
+      animation: bgfade 2s ease-in;
+    }
+    @keyframes bgfade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .center-card {
+      background: rgba(255,255,255,0.15);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+      max-width: 420px;
+      width: 90vw;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .birthday-text {
+      max-height: 60vh;
+      overflow-y: auto;
+      padding: 1.2rem 1rem;
+      text-align: left;
+      font-size: 1.1rem;
+      color: #fff;
+      text-shadow: 0 0 10px #ffb3c6;
+      scrollbar-width: thin;
+      margin: 0 auto;
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 700px;
+      box-sizing: border-box;
+      background: none;
+      word-break: break-word;
+    }
+    .hidden-message {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+      filter: drop-shadow(0 0 30px #ff4d6d88);
+    }
+    .show-message {
+      opacity: 1;
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 60px #ff4d6d);
+    }
+    .hidden-message h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      text-shadow: 2px 2px #ff4d6d, 0 0 20px #fff;
+      letter-spacing: 2px;
+      margin-bottom: 0.5em;
+      animation: glow 2s infinite alternate;
+      text-align: center;
+      padding: 0 0.5rem;
+      word-break: break-word;
+    }
+    @keyframes glow {
+      from { text-shadow: 2px 2px #ff4d6d, 0 0 10px #fff; }
+      to { text-shadow: 2px 2px #ff4d6d, 0 0 30px #fff; }
+    }
+    .btn-love {
+      background-color: #ff4d6d;
+      color: white;
+      padding: 15px 40px;
+      font-size: 20px;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: none;
+      transition: transform 0.2s;
+      margin-top: 30px;
+      animation: heartbeat 1.2s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      10%, 30% { transform: scale(1.1); }
+      20%, 40% { transform: scale(0.95); }
+      50% { transform: scale(1.05); }
+      60%, 90% { transform: scale(1); }
+    }
+    .btn-love:disabled {
+      background: #ffb3c6;
+      color: #fff;
+      animation: none;
+    }
+    .confetti {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      opacity: 0.85;
+      z-index: 0;
+      animation: fall 5s linear forwards;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg) scale(1); }
+      100% { transform: translateY(100vh) rotate(360deg) scale(1.2); }
+    }
+    /* Confetti shapes */
+    .circle { border-radius: 50%; }
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 14px solid;
+      background: none !important;
+    }
+    .star {
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+      background: inherit;
+    }
+    /* Login form styles */
+    #loginCard {
+      background: rgba(255,255,255,0.18);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+      max-width: 340px;
+      width: 90vw;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+    #loginCard label { color: #fff; }
+    #loginCard input {
+      background: rgba(255,255,255,0.4);
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    #loginCard input:focus { outline: 2px solid #ff4d6d; }
+    #loginCard .btn {
+      background: #ff4d6d;
+      color: #fff;
+      border-radius: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    /* Responsive login and card */
+    #loginCard, .center-card {
+      max-width: 420px;
+      width: 95vw;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+    }
+    /* Media queries for mobile */
+    @media (max-width: 600px) {
+      .birthday-text {
+        font-size: 1rem;
+        padding: 1rem 0.5rem;
+        max-width: 98vw;
+        max-height: 55vh;
+      }
+      .hidden-message h1 {
+        font-size: 1.3rem !important;
+        padding: 0 0.2rem;
+      }
+      #loginCard, .center-card {
+        padding: 1.2rem 0.5rem;
+        max-width: 99vw;
+      }
+      .btn-love {
+        font-size: 1rem;
+        padding: 12px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div id="loginCard">
+    <h2 class="mb-3">karsa login baktu</h2>
+    <p style="font-size:1.2rem; color:#fff; margin-bottom:1.5rem;">koturu kuch bhi username password likhdo</p>
+    <form id="loginForm" autocomplete="off">
+      <div class="mb-3 text-start">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" class="form-control" required>
+      </div>
+      <div class="mb-3 text-start">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn w-100">Log In</button>
+    </form>
+  </div>
+
+  <!-- Press Me Baby Card (shown after login) -->
+  <div class="center-card" id="pressMeCard" style="display:none;">
+    <h2 style="color:#fff; text-shadow:0 0 10px #ffb3c6;">raha nai jaata tadap hii aesi ha</h2>
+    <button class="btn btn-love" onclick="showBirthdayMessage()" id="pressMeBtn">Press Me Baby 💝</button>
+  </div>
+
+  <!-- Birthday Message (now outside the box, no .center-card) -->
+  <div class="hidden-message" id="birthdayMessage" style="display:none;">
+    <h1>🎉 Happy Birthday, Meri jaan 🎂</h1>
+    <div class="birthday-text">
+      baby we are now in 4th year of our togetherness. I seriously can't believe this jaise kal hi mile hai.
+      it feels so great to remember myself that we have this much strong bond.
+      I’m so lucky to walk this life with you, laugh with you, grow with you, and love you more every single day.
+      On your birthday, I just want you to know how deeply you're cherished, how endlessly you're loved, and how
+      incredibly thankful I am for you.
+      May your day be as sweet as your heart, as beautiful as your soul, and as magical as the love we share.
+      Here's to many more birthdays together, hand in hand.<br><br>
+      Happy Birthday, baby. I love you endlessly. 💖🎂<br>
+      <span style="font-size:2rem;">💖</span>
+    </div>
+  </div>
+
+  <script>
+    // Login logic
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if(username && password) {
+        document.getElementById('loginCard').style.display = 'none';
+        document.getElementById('pressMeCard').style.display = 'block';
+      } else {
+        alert('Please enter username and password!');
+      }
+    });
+
+    // Show birthday message and confetti
+    function showBirthdayMessage() {
+      document.getElementById('pressMeCard').style.display = 'none';
+      const msg = document.getElementById('birthdayMessage');
+      msg.style.display = 'block';
+      setTimeout(() => msg.classList.add('show-message'), 100);
+
+      // Change background image (responsive)
+      document.body.style.background =
+        "linear-gradient(135deg, #ff9a9e88, #fad0c488), url('1000021144.jpg') center center / cover no-repeat fixed";
+
+      // Confetti
+      const shapes = ['confetti', 'circle', 'triangle', 'star'];
+      for (let i = 0; i < 80; i++) {
+        let confetti = document.createElement("div");
+        let shape = shapes[Math.floor(Math.random() * shapes.length)];
+        confetti.classList.add("confetti");
+        if (shape !== 'confetti') confetti.classList.add(shape);
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = "-20px";
+        confetti.style.backgroundColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        confetti.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        confetti.style.transform = `rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.7 + 0.7})`;
+        if (shape === 'triangle') {
+          confetti.style.borderBottomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+          confetti.style.backgroundColor = "transparent";
+        }
+        document.body.appendChild(confetti);
+
+        confetti.addEventListener('animationend', () => confetti.remove());
+      }
+    }
+  </script>
+</body>
+</html>
+
